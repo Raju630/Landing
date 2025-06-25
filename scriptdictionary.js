@@ -257,8 +257,11 @@ function toggleWeakWordMeaning() {
 function addWord() {
     const word = document.getElementById('word-input').value.trim();
     const meaning = document.getElementById('meaning-input').value.trim();
-    const category = document.getElementById('category-select').value;
-    
+    let category = document.getElementById('category-select').value;
+    // Normalize category to match filter tags (capitalize first letter, rest lowercase)
+    if (category) {
+        category = category.charAt(0).toUpperCase() + category.slice(1).toLowerCase();
+    }
     if (word && meaning) {
         dictionary[word] = {
             meaning: meaning,
@@ -336,7 +339,8 @@ function updateWordDisplay() {
     }
     
     words.forEach(word => {
-        if (!activeCategory || dictionary[word].category === activeCategory) {
+        // Compare categories in a case-insensitive way
+        if (!activeCategory || (dictionary[word].category && dictionary[word].category.toLowerCase() === activeCategory.toLowerCase())) {
             container.appendChild(createWordCard(word));
         }
     });
@@ -472,7 +476,7 @@ function filterWords(searchTerm) {
     Object.keys(dictionary).forEach(word => {
         if ((word.toLowerCase().includes(searchTerm) || 
              dictionary[word].meaning.toLowerCase().includes(searchTerm)) && 
-            (!activeCategory || dictionary[word].category === activeCategory)) {
+            (!activeCategory || (dictionary[word].category && dictionary[word].category.toLowerCase() === activeCategory.toLowerCase()))) {
             container.appendChild(createWordCard(word));
         }
     });
