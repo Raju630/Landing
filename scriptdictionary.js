@@ -149,33 +149,41 @@ function createWeakWordCard(word) {
     const card = document.createElement('div');
     card.className = 'weak-word-card';
 
-    const wordText = document.createElement('span');
-    wordText.textContent = word;
+    // Main word (Bangla)
+    const banglaWord = document.createElement('div');
+    banglaWord.className = 'weak-word-card-bangla';
+    banglaWord.textContent = word;
 
-    const controls = document.createElement('div');
-    controls.className = 'weak-word-controls';
+    // Japanese meaning + speak icon
+    const japaneseContainer = document.createElement('div');
+    japaneseContainer.className = 'weak-word-card-japanese';
+
+    const japaneseWord = document.createElement('span');
+    japaneseWord.textContent = dictionary[word]?.meaning || '';
 
     const speakIcon = document.createElement('span');
     speakIcon.className = 'speak-icon';
     speakIcon.textContent = '🔊';
     speakIcon.onclick = (e) => {
         e.stopPropagation();
-        speakJapanese(dictionary[word].meaning);
+        speakJapanese(japaneseWord.textContent);
     };
 
-    const removeBtn = document.createElement('button');
-    removeBtn.className = 'control-button';
-    removeBtn.textContent = 'Remove';
-    removeBtn.onclick = (e) => {
+    japaneseContainer.appendChild(japaneseWord);
+    japaneseContainer.appendChild(speakIcon);
+
+    // Delete button (remove from weak words)
+    const deleteBtn = document.createElement('button');
+    deleteBtn.textContent = '×';
+    deleteBtn.className = 'delete-button';
+    deleteBtn.onclick = (e) => {
         e.stopPropagation();
         removeFromWeakWords(word);
     };
 
-    controls.appendChild(speakIcon);
-    controls.appendChild(removeBtn);
-
-    card.appendChild(wordText);
-    card.appendChild(controls);
+    card.appendChild(banglaWord);
+    card.appendChild(japaneseContainer);
+    card.appendChild(deleteBtn);
 
     return card;
 }
