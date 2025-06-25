@@ -1,0 +1,29 @@
+{
+  "dictionary": {
+    "পরিধান করা (শার্ট, ইত্যাদি)": {"meaning": "きます", "category": "verb", "dateAdded": "2025-06-24T00:00:00.000Z"},
+    "পরিধান করা (জুতা, প্যান্ট)": {"meaning": "はきます", "category": "verb", "dateAdded": "2025-06-24T00:00:00.000Z"},
+    "পরিধান করা (টুপি)": {"meaning": "かぶります", "category": "verb", "dateAdded": "2025-06-24T00:00:00.000Z"},
+    "পরিধান করা (চশমা)": {"meaning": "かけます", "category": "verb", "dateAdded": "2025-06-24T00:00:00.000Z"},
+    "জন্ম নেওয়া": {"meaning": "うまれます", "category": "verb", "dateAdded": "2025-06-24T00:00:00.000Z"},
+    "কোট": {"meaning": "コート", "category": "noun", "dateAdded": "2025-06-24T00:00:00.000Z"},
+    "স্যুট": {"meaning": "スーツ", "category": "noun", "dateAdded": "2025-06-24T00:00:00.000Z"},
+    "সোয়েটার": {"meaning": "セーター", "category": "noun", "dateAdded": "2025-06-24T00:00:00.000Z"},
+    "টুপি": {"meaning": "ぼうし", "category": "noun", "dateAdded": "2025-06-24T00:00:00.000Z"},
+    "চশমা": {"meaning": "めがね", "category": "noun", "dateAdded": "2025-06-24T00:00:00.000Z"},
+    "প্রায়শই": {"meaning": "よく", "category": "adverb", "dateAdded": "2025-06-24T00:00:00.000Z"},
+    "অভিনন্দন": {"meaning": "おめでとう ございます", "category": "phrase", "dateAdded": "2025-06-24T00:00:00.000Z"},
+    "এদিক (সম্মানসূচক)": {"meaning": "こちら", "category": "noun", "dateAdded": "2025-06-24T00:00:00.000Z"},
+    "বাড়ি ভাড়া": {"meaning": "やちん", "category": "noun", "dateAdded": "2025-06-24T00:00:00.000Z"},
+    "আচ্ছা (দ্বিধা প্রকাশে)": {"meaning": "うーん", "category": "interjection", "dateAdded": "2025-06-24T00:00:00.000Z"},
+    "ডাইনিং কিচেন": {"meaning": "ダイニングキッチン", "category": "noun", "dateAdded": "2025-06-24T00:00:00.000Z"},
+    "জাপানি ঘর": {"meaning": "わしつ", "category": "noun", "dateAdded": "2025-06-24T00:00:00.000Z"},
+    "জাপানি আলমারি": {"meaning": "おしいれ", "category": "noun", "dateAdded": "2025-06-24T00:00:00.000Z"},
+    "জাপানি ম্যাট্রেস ও কম্বল": {"meaning": "ふとん", "category": "noun", "dateAdded": "2025-06-24T00:00:00.000Z"},
+    "অ্যাপার্টমেন্ট": {"meaning": "アパート", "category": "noun", "dateAdded": "2025-06-24T00:00:00.000Z"},
+    "প্যারিস": {"meaning": "パリ", "category": "noun", "dateAdded": "2025-06-24T00:00:00.000Z"},
+    "চীনের মহাপ্রাচীর": {"meaning": "ばんりの ちょうじょう", "category": "noun", "dateAdded": "2025-06-24T00:00:00.000Z"},
+    "অবসর উন্নয়ন কেন্দ্র": {"meaning": "よかかいはつセンター", "category": "noun", "dateAdded": "2025-06-24T00:00:00.000Z"},
+    "অবসর বিষয়ক শ্বেতপত্র": {"meaning": "レジャーはくしょ", "category": "noun", "dateAdded": "2025-06-24T00:00:00.000Z"}
+  },
+  "weakWords": []
+}

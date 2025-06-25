@@ -1,0 +1,23 @@
+{
+  "dictionary": {
+    "ভাবা, বিবেচনা করা": {"meaning": "かんがえます", "category": "verb", "dateAdded": "2025-06-24T00:00:00.000Z"},
+    "পৌঁছানো (স্টেশনে)": {"meaning": "つきます", "category": "verb", "dateAdded": "2025-06-24T00:00:00.000Z"},
+    "বিদেশে পড়াশোনা করা": {"meaning": "りゅうがくします", "category": "verb", "dateAdded": "2025-06-24T00:00:00.000Z"},
+    "বৃদ্ধি পাওয়া (বয়স)": {"meaning": "とります", "category": "verb", "dateAdded": "2025-06-24T00:00:00.000Z"},
+    "গ্রাম, নিজের শহর": {"meaning": "いなか", "category": "noun", "dateAdded": "2025-06-24T00:00:00.000Z"},
+    "দূতাবাস": {"meaning": "たいしかん", "category": "noun", "dateAdded": "2025-06-24T00:00:00.000Z"},
+    "গ্রুপ": {"meaning": "グループ", "category": "noun", "dateAdded": "2025-06-24T00:00:00.000Z"},
+    "সুযোগ / চান্স": {"meaning": "チャンス", "category": "noun", "dateAdded": "2025-06-24T00:00:00.000Z"},
+    "দশ কোটি": {"meaning": "おく", "category": "noun", "dateAdded": "2025-06-24T00:00:00.000Z"},
+    "যদি ～ [থাকতো]": {"meaning": "もし［～たら］", "category": "phrase", "dateAdded": "2025-06-24T00:00:00.000Z"},
+    "যতই ～ হোক না কেন": {"meaning": "いくら［～ても］", "category": "phrase", "dateAdded": "2025-06-24T00:00:00.000Z"},
+    "বদলি": {"meaning": "てんきん", "category": "noun", "dateAdded": "2025-06-24T00:00:00.000Z"},
+    "বিষয়": {"meaning": "こと", "category": "noun", "dateAdded": "2025-06-24T00:00:00.000Z"},
+    "একসাথে পান করা যাক": {"meaning": "いっぱい のみましょう", "category": "phrase", "dateAdded": "2025-06-24T00:00:00.000Z"},
+    "সবকিছুর জন্য ধন্যবাদ": {"meaning": "いろいろ おせわになりました", "category": "phrase", "dateAdded": "2025-06-24T00:00:00.000Z"},
+    "মনোযোগ সহকারে চেষ্টা করা": {"meaning": "がんばります", "category": "verb", "dateAdded": "2025-06-24T00:00:00.000Z"},
+    "ভালো থাকুন (বিদায়ের সময়)": {"meaning": "どうぞ おげんきで", "category": "phrase", "dateAdded": "2025-06-24T00:00:00.000Z"},
+    "কথোপকথন": {"meaning": "かいわ", "category": "noun", "dateAdded": "2025-06-24T00:00:00.000Z"}
+  },
+  "weakWords": []
+}

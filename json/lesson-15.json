@@ -1,0 +1,33 @@
+{
+  "dictionary": {
+    "দাঁড়ানো": {"meaning": "たちます", "category": "verb", "dateAdded": "2025-06-24T00:00:00.000Z"},
+    "বসা": {"meaning": "すわります", "category": "verb", "dateAdded": "2025-06-24T00:00:00.000Z"},
+    "ব্যবহার করা": {"meaning": "つかいます", "category": "verb", "dateAdded": "2025-06-24T00:00:00.000Z"},
+    "রাখা": {"meaning": "おきます", "category": "verb", "dateAdded": "2025-06-24T00:00:00.000Z"},
+    "তৈরি করা": {"meaning": "つくります", "category": "verb", "dateAdded": "2025-06-24T00:00:00.000Z"},
+    "বিক্রি করা": {"meaning": "うります", "category": "verb", "dateAdded": "2025-06-24T00:00:00.000Z"},
+    "জানা": {"meaning": "しります", "category": "verb", "dateAdded": "2025-06-24T00:00:00.000Z"},
+    "বাস করা": {"meaning": "すみます", "category": "verb", "dateAdded": "2025-06-24T00:00:00.000Z"},
+    "গবেষণা করা": {"meaning": "けんきゅうします", "category": "verb", "dateAdded": "2025-06-24T00:00:00.000Z"},
+    "জানা / জানি": {"meaning": "しっています", "category": "verb", "dateAdded": "2025-06-24T00:00:00.000Z"},
+    "বাস করি / বাস করে": {"meaning": "すんでいます", "category": "verb", "dateAdded": "2025-06-24T00:00:00.000Z"},
+    "ডেটা / নথিপত্র": {"meaning": "しりょう", "category": "noun", "dateAdded": "2025-06-24T00:00:00.000Z"},
+    "ক্যাটালগ": {"meaning": "カタログ", "category": "noun", "dateAdded": "2025-06-24T00:00:00.000Z"},
+    "সময়সূচি": {"meaning": "じこくひょう", "category": "noun", "dateAdded": "2025-06-24T00:00:00.000Z"},
+    "পোশাক": {"meaning": "ふく", "category": "noun", "dateAdded": "2025-06-24T00:00:00.000Z"},
+    "পণ্য": {"meaning": "せいひん", "category": "noun", "dateAdded": "2025-06-24T00:00:00.000Z"},
+    "সফটওয়্যার": {"meaning": "ソフト", "category": "noun", "dateAdded": "2025-06-24T00:00:00.000Z"},
+    "বিশেষজ্ঞ": {"meaning": "せんもん", "category": "noun", "dateAdded": "2025-06-24T00:00:00.000Z"},
+    "দাঁতের ডাক্তার": {"meaning": "はいしゃ", "category": "noun", "dateAdded": "2025-06-24T00:00:00.000Z"},
+    "চুল কাটার দোকান": {"meaning": "とこや", "category": "noun", "dateAdded": "2025-06-24T00:00:00.000Z"},
+    "টিকিট এজেন্সি": {"meaning": "プレイガイド", "category": "noun", "dateAdded": "2025-06-24T00:00:00.000Z"},
+    "অবিবাহিত": {"meaning": "どくしん", "category": "adjective", "dateAdded": "2025-06-24T00:00:00.000Z"},
+    "বিশেষ করে": {"meaning": "とくに", "category": "adverb", "dateAdded": "2025-06-24T00:00:00.000Z"},
+    "মনে করা / মনে পড়া": {"meaning": "おもいだします", "category": "verb", "dateAdded": "2025-06-24T00:00:00.000Z"},
+    "আপনার পরিবার": {"meaning": "ごかぞく", "category": "noun", "dateAdded": "2025-06-24T00:00:00.000Z"},
+    "থাকা (সম্মানসূচক)": {"meaning": "いらっしゃいます", "category": "verb", "dateAdded": "2025-06-24T00:00:00.000Z"},
+    "উচ্চ মাধ্যমিক বিদ্যালয়": {"meaning": "こうこう", "category": "noun", "dateAdded": "2025-06-24T00:00:00.000Z"},
+    "নানবা (ওসাকার একটি এলাকা)": {"meaning": "なんば", "category": "noun", "dateAdded": "2025-06-24T00:00:00.000Z"}
+  },
+  "weakWords": []
+}
