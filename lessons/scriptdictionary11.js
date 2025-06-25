@@ -137,7 +137,7 @@ function toggleRandomMeaning() {
 
 // Weak Words Feature
 function loadWeakWords() {
-    const savedWeakWords = localStorage.getItem(getWeakWordsKey());
+    const savedWeakWords = localStorage.getItem('weakWords');
     if (savedWeakWords) {
         weakWords = new Set(JSON.parse(savedWeakWords));
         updateWeakWordsCount();
@@ -145,7 +145,7 @@ function loadWeakWords() {
 }
 
 function saveWeakWords() {
-    localStorage.setItem(getWeakWordsKey(), JSON.stringify(Array.from(weakWords)));
+    localStorage.setItem('weakWords', JSON.stringify(Array.from(weakWords)));
 }
 
 function updateWeakWordsCount() {
@@ -169,33 +169,41 @@ function createWeakWordCard(word) {
     const card = document.createElement('div');
     card.className = 'weak-word-card';
 
-    const wordText = document.createElement('span');
-    wordText.textContent = word;
+    // Main word (Bangla)
+    const banglaWord = document.createElement('div');
+    banglaWord.className = 'weak-word-card-bangla';
+    banglaWord.textContent = word;
 
-    const controls = document.createElement('div');
-    controls.className = 'weak-word-controls';
+    // Japanese meaning + speak icon
+    const japaneseContainer = document.createElement('div');
+    japaneseContainer.className = 'weak-word-card-japanese';
+
+    const japaneseWord = document.createElement('span');
+    japaneseWord.textContent = dictionary[word]?.meaning || '';
 
     const speakIcon = document.createElement('span');
     speakIcon.className = 'speak-icon';
     speakIcon.textContent = '🔊';
     speakIcon.onclick = (e) => {
         e.stopPropagation();
-        speakJapanese(dictionary[word].meaning);
+        speakJapanese(japaneseWord.textContent);
     };
 
-    const removeBtn = document.createElement('button');
-    removeBtn.className = 'control-button';
-    removeBtn.textContent = 'Remove';
-    removeBtn.onclick = (e) => {
+    japaneseContainer.appendChild(japaneseWord);
+    japaneseContainer.appendChild(speakIcon);
+
+    // Delete button (remove from weak words)
+    const deleteBtn = document.createElement('button');
+    deleteBtn.textContent = '×';
+    deleteBtn.className = 'delete-button';
+    deleteBtn.onclick = (e) => {
         e.stopPropagation();
         removeFromWeakWords(word);
     };
 
-    controls.appendChild(speakIcon);
-    controls.appendChild(removeBtn);
-
-    card.appendChild(wordText);
-    card.appendChild(controls);
+    card.appendChild(banglaWord);
+    card.appendChild(japaneseContainer);
+    card.appendChild(deleteBtn);
 
     return card;
 }
@@ -277,8 +285,11 @@ function toggleWeakWordMeaning() {
 function addWord() {
     const word = document.getElementById('word-input').value.trim();
     const meaning = document.getElementById('meaning-input').value.trim();
-    const category = document.getElementById('category-select').value;
-    
+    let category = document.getElementById('category-select').value;
+    // Normalize category to match filter tags (capitalize first letter, rest lowercase)
+    if (category) {
+        category = category.charAt(0).toUpperCase() + category.slice(1).toLowerCase();
+    }
     if (word && meaning) {
         dictionary[word] = {
             meaning: meaning,
@@ -315,6 +326,81 @@ function createWordCard(word) {
         speakJapanese(dictionary[word].meaning);
     };
 
+    // Edit button
+    const editBtn = document.createElement('button');
+    editBtn.textContent = '✎';
+    editBtn.className = 'edit-button';
+    editBtn.style.position = 'absolute';
+    editBtn.style.top = '-8px';
+    editBtn.style.right = '24px';
+    editBtn.style.width = '24px';
+    editBtn.style.height = '24px';
+    editBtn.style.backgroundColor = '#4A90E2';
+    editBtn.style.color = 'white';
+    editBtn.style.border = 'none';
+    editBtn.style.borderRadius = '50%';
+    editBtn.style.cursor = 'pointer';
+    editBtn.style.display = 'flex';
+    editBtn.style.alignItems = 'center';
+    editBtn.style.justifyContent = 'center';
+    editBtn.style.fontSize = '16px';
+    editBtn.style.opacity = '0';
+    editBtn.style.transition = 'opacity 0.3s';
+
+    card.addEventListener('mouseenter', () => {
+        editBtn.style.opacity = '1';
+    });
+    card.addEventListener('mouseleave', () => {
+        editBtn.style.opacity = '0';
+    });
+
+    editBtn.onclick = (e) => {
+        e.stopPropagation();
+        // Replace card content with edit form
+        card.innerHTML = '';
+        const wordInput = document.createElement('input');
+        wordInput.type = 'text';
+        wordInput.value = word;
+        wordInput.style.marginBottom = '8px';
+        wordInput.style.width = '100%';
+        const meaningInput = document.createElement('input');
+        meaningInput.type = 'text';
+        meaningInput.value = dictionary[word].meaning;
+        meaningInput.style.marginBottom = '8px';
+        meaningInput.style.width = '100%';
+        const categoryInput = document.createElement('input');
+        categoryInput.type = 'text';
+        categoryInput.value = dictionary[word].category || '';
+        categoryInput.style.marginBottom = '8px';
+        categoryInput.style.width = '100%';
+        const saveBtn = document.createElement('button');
+        saveBtn.textContent = 'Save';
+        saveBtn.className = 'add-button';
+        saveBtn.onclick = (ev) => {
+            ev.stopPropagation();
+            const newWord = wordInput.value.trim();
+            const newMeaning = meaningInput.value.trim();
+            const newCategory = categoryInput.value.trim();
+            if (newWord && newMeaning) {
+                // If word changed, delete old key
+                if (newWord !== word) {
+                    dictionary[newWord] = {...dictionary[word]};
+                    delete dictionary[word];
+                }
+                dictionary[newWord].meaning = newMeaning;
+                dictionary[newWord].category = newCategory;
+                saveDictionary();
+                updateWordDisplay();
+                updateStats();
+            }
+        };
+        card.appendChild(wordInput);
+        card.appendChild(meaningInput);
+        card.appendChild(categoryInput);
+        card.appendChild(saveBtn);
+    };
+
+    // Delete button
     const deleteBtn = document.createElement('button');
     deleteBtn.textContent = '×';
     deleteBtn.className = 'delete-button';
@@ -328,6 +414,7 @@ function createWordCard(word) {
 
     card.appendChild(banglaWord);
     card.appendChild(japaneseContainer);
+    card.appendChild(editBtn);
     card.appendChild(deleteBtn);
 
     return card;
@@ -354,9 +441,22 @@ function updateWordDisplay() {
         container.innerHTML = '<p style="text-align: center; color: #666;">No words added yet</p>';
         return;
     }
-    
+    const mainCategories = ['noun', 'verb', 'adjective', 'adverb', 'others'];
     words.forEach(word => {
-        if (!activeCategory || dictionary[word].category === activeCategory) {
+        if (!activeCategory) {
+            container.appendChild(createWordCard(word));
+        } else if (activeCategory.toLowerCase() === 'others') {
+            // Show words not in main categories
+            if (
+                dictionary[word].category &&
+                !mainCategories.includes(dictionary[word].category.toLowerCase())
+            ) {
+                container.appendChild(createWordCard(word));
+            }
+        } else if (
+            dictionary[word].category &&
+            dictionary[word].category.toLowerCase() === activeCategory.toLowerCase()
+        ) {
             container.appendChild(createWordCard(word));
         }
     });
@@ -450,7 +550,7 @@ function checkAnswer(selectedAnswer) {
 
 // Search and Filter
 function setupCategoryFilters() {
-    const categories = ['noun', 'verb', 'adjective', 'adverb', 'other'];
+    const categories = ['noun', 'verb', 'adjective', 'adverb', 'others'];
     const filterContainer = document.getElementById('category-filters');
     
     categories.forEach(category => {
@@ -488,19 +588,32 @@ function setupSearchListener() {
 function filterWords(searchTerm) {
     const container = document.getElementById('word-list-container');
     container.innerHTML = '';
-
+    const mainCategories = ['noun', 'verb', 'adjective', 'adverb', 'phrase'];
     Object.keys(dictionary).forEach(word => {
         if ((word.toLowerCase().includes(searchTerm) || 
-             dictionary[word].meaning.toLowerCase().includes(searchTerm)) && 
-            (!activeCategory || dictionary[word].category === activeCategory)) {
-            container.appendChild(createWordCard(word));
+             dictionary[word].meaning.toLowerCase().includes(searchTerm))) {
+            if (!activeCategory) {
+                container.appendChild(createWordCard(word));
+            } else if (activeCategory.toLowerCase() === 'others') {
+                if (
+                    dictionary[word].category &&
+                    !mainCategories.includes(dictionary[word].category.toLowerCase())
+                ) {
+                    container.appendChild(createWordCard(word));
+                }
+            } else if (
+                dictionary[word].category &&
+                dictionary[word].category.toLowerCase() === activeCategory.toLowerCase()
+            ) {
+                container.appendChild(createWordCard(word));
+            }
         }
     });
 }
 
 // Storage Management
 function loadDictionary() {
-    const savedDictionary = localStorage.getItem(getDictionaryKey());
+    const savedDictionary = localStorage.getItem('dictionary');
     if (savedDictionary) {
         dictionary = JSON.parse(savedDictionary);
         updateWordDisplay();
@@ -508,7 +621,7 @@ function loadDictionary() {
 }
 
 function saveDictionary() {
-    localStorage.setItem(getDictionaryKey(), JSON.stringify(dictionary));
+    localStorage.setItem('dictionary', JSON.stringify(dictionary));
 }
 
 function clearInputs() {
