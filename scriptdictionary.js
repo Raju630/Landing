@@ -430,7 +430,7 @@ function checkAnswer(selectedAnswer) {
 
 // Search and Filter
 function setupCategoryFilters() {
-    const categories = ['noun', 'verb', 'adjective', 'adverb', 'other'];
+    const categories = ['noun', 'verb', 'adjective', 'adverb', 'Phrase'];
     const filterContainer = document.getElementById('category-filters');
     
     categories.forEach(category => {
