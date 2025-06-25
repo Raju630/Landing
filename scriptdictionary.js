@@ -337,10 +337,22 @@ function updateWordDisplay() {
         container.innerHTML = '<p style="text-align: center; color: #666;">No words added yet</p>';
         return;
     }
-    
+    const mainCategories = ['noun', 'verb', 'adjective', 'adverb', 'others'];
     words.forEach(word => {
-        // Compare categories in a case-insensitive way
-        if (!activeCategory || (dictionary[word].category && dictionary[word].category.toLowerCase() === activeCategory.toLowerCase())) {
+        if (!activeCategory) {
+            container.appendChild(createWordCard(word));
+        } else if (activeCategory.toLowerCase() === 'others') {
+            // Show words not in main categories
+            if (
+                dictionary[word].category &&
+                !mainCategories.includes(dictionary[word].category.toLowerCase())
+            ) {
+                container.appendChild(createWordCard(word));
+            }
+        } else if (
+            dictionary[word].category &&
+            dictionary[word].category.toLowerCase() === activeCategory.toLowerCase()
+        ) {
             container.appendChild(createWordCard(word));
         }
     });
@@ -434,7 +446,7 @@ function checkAnswer(selectedAnswer) {
 
 // Search and Filter
 function setupCategoryFilters() {
-    const categories = ['noun', 'verb', 'adjective', 'adverb', 'Phrase'];
+    const categories = ['noun', 'verb', 'adjective', 'adverb', 'others'];
     const filterContainer = document.getElementById('category-filters');
     
     categories.forEach(category => {
@@ -472,12 +484,25 @@ function setupSearchListener() {
 function filterWords(searchTerm) {
     const container = document.getElementById('word-list-container');
     container.innerHTML = '';
-
+    const mainCategories = ['noun', 'verb', 'adjective', 'adverb', 'phrase'];
     Object.keys(dictionary).forEach(word => {
         if ((word.toLowerCase().includes(searchTerm) || 
-             dictionary[word].meaning.toLowerCase().includes(searchTerm)) && 
-            (!activeCategory || (dictionary[word].category && dictionary[word].category.toLowerCase() === activeCategory.toLowerCase()))) {
-            container.appendChild(createWordCard(word));
+             dictionary[word].meaning.toLowerCase().includes(searchTerm))) {
+            if (!activeCategory) {
+                container.appendChild(createWordCard(word));
+            } else if (activeCategory.toLowerCase() === 'others') {
+                if (
+                    dictionary[word].category &&
+                    !mainCategories.includes(dictionary[word].category.toLowerCase())
+                ) {
+                    container.appendChild(createWordCard(word));
+                }
+            } else if (
+                dictionary[word].category &&
+                dictionary[word].category.toLowerCase() === activeCategory.toLowerCase()
+            ) {
+                container.appendChild(createWordCard(word));
+            }
         }
     });
 }
