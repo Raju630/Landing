@@ -66,15 +66,15 @@ h3 {
 }
 
 .word-display {
-    font-size: 28px;
+    font-size: 26px;
     color: #482c1d;
-    font-weight: bold;
-    margin: 15px 0;
+    /* font-weight: bold; */
+    margin: 10px 0;
     transition: all 0.3s ease;
 }
 
 .meaning-display {
-    font-size: 24px;
+    font-size: 26px;
     color: #8b6b4a;
     display: flex;
     align-items: center;
@@ -208,7 +208,7 @@ input, .category-select {
 }
 
 .word-card-japanese {
-    font-size: 16px;
+    font-size: 20px;
     color: #8b6b4a;
     display: flex;
     align-items: center;
